@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f8f6f3">
+    <meta name="description" content="Temukan alat gambar untuk belajar, merancang, dan berkarya bersama Goresan Store.">
+    <title>Goresan Store — Teman berkarya</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="module" src="js/app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#konten">Langsung ke konten</a>
+    <header class="site-header">
+      <div class="site-header__inner shell">
+        <a class="wordmark" href="#beranda" aria-label="Goresan Store, beranda">
+          <span class="wordmark__stamp" aria-hidden="true">G</span>
+          <span>goresan<span class="wordmark__light"> store</span></span>
+        </a>
+        <nav class="main-nav" aria-label="Navigasi utama">
+          <a href="#katalog">Katalog</a>
+          <a href="#cara-pesan">Cara pesan</a>
+          <a href="#faq">FAQ</a>
+          <a href="#kontak">Kontak</a>
+        </nav>
+        <a class="header-cart" href="#keranjang">
+          Keranjang <span id="cart-count" class="header-cart__count" aria-label="0 barang">0</span>
+        </a>
+      </div>
+    </header>
+
+    <main id="konten">
+      <section class="hero shell" id="beranda" aria-labelledby="hero-title">
+        <div class="hero__copy">
+          <p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span> Peralatan untuk ide yang nyata</p>
+          <h1 id="hero-title">Mulai berkarya<br> dengan alat <em>yang tepat.</em></h1>
+          <p class="hero__intro">Temukan perlengkapan gambar untuk belajar, merancang, dan membuat sesuatu yang sepenuhnya milikmu.</p>
+          <a class="button button--primary" href="#katalog">Jelajahi produk <span aria-hidden="true">↘</span></a>
+          <p class="hero__note">Katalog contoh · Harga dan ketersediaan dikonfirmasi penjual</p>
+        </div>
+        <div class="hero-art" role="img" aria-label="Suasana studio seni dengan alat gambar dan lukisan">
+          <img class="hero-art__photo" src="assets/images/halaman%20depan.jpg" alt="">
+          <span class="hero-art__label">RUANG<br>UNTUK IDE</span>
+        </div>
+      </section>
+
+      <section class="shop-section" id="katalog" aria-labelledby="catalog-title">
+        <div class="shell">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Pilih bahanmu</p>
+              <h2 id="catalog-title">Temukan alat gambar</h2>
+            </div>
+            <p class="section-heading__aside">Dari garis pertama sampai karya yang selesai.</p>
+          </div>
+          <p class="sample-notice"><span aria-hidden="true">!</span> Data produk dan harga di halaman ini masih contoh, bukan penawaran toko.</p>
+
+          <div class="catalog-tools">
+            <div class="field catalog-search">
+              <label for="search-input">Cari produk</label>
+              <div class="input-with-icon">
+                <span aria-hidden="true">⌕</span>
+                <input id="search-input" type="search" placeholder="Nama, merek, atau kebutuhan..." autocomplete="off">
+              </div>
+            </div>
+            <div class="field catalog-filter">
+              <label for="category-filter">Kategori</label>
+              <select id="category-filter">
+                <option value="">Semua kategori</option>
+              </select>
+            </div>
+            <p id="result-count" class="result-count" aria-live="polite"></p>
+          </div>
+
+          <div class="shop-layout">
+            <div class="catalog-column">
+              <div id="product-grid" class="product-grid" aria-live="polite"></div>
+              <div id="empty-results" class="empty-state" hidden>
+                <span class="empty-state__mark" aria-hidden="true">⌕</span>
+                <h3>Produk belum ditemukan</h3>
+                <p>Coba kata lain atau reset filter untuk melihat semua produk.</p>
+                <button class="button button--outline" id="reset-filters" type="button">Reset pencarian</button>
+              </div>
+            </div>
+
+            <aside class="cart-panel" id="keranjang" aria-labelledby="cart-title">
+              <div class="cart-panel__heading">
+                <div>
+                  <p class="eyebrow">Daftar pilihan</p>
+                  <h2 id="cart-title">Keranjang <span id="cart-heading-count">(0)</span></h2>
+                </div>
+                <span class="cart-panel__icon" aria-hidden="true">↗</span>
+              </div>
+              <div id="cart-items" class="cart-items"></div>
+              <p id="cart-empty" class="cart-empty">Belum ada barang. Pilih alat gambar untuk memulai.</p>
+              <div class="cart-total">
+                <span>Estimasi harga barang</span>
+                <strong id="cart-total">Rp0</strong>
+              </div>
+              <p class="cart-caption">Belum termasuk ongkir. Stok dan biaya lain dikonfirmasi penjual.</p>
+
+              <form id="checkout-form" novalidate>
+                <div class="form-divider"><span>Siapkan pesanan</span></div>
+                <div class="field">
+                  <label for="customer-name">Nama</label>
+                  <input id="customer-name" name="name" type="text" autocomplete="name" minlength="2" maxlength="80" aria-describedby="name-error">
+                  <small class="field-error" id="name-error"></small>
+                </div>
+                <div class="field">
+                  <label for="customer-phone">Nomor WhatsApp kamu</label>
+                  <input id="customer-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="Contoh: 08... atau 62..." aria-describedby="phone-hint phone-error">
+                  <small class="field-hint" id="phone-hint">8–15 digit; spasi dan tanda baca akan diabaikan.</small>
+                  <small class="field-error" id="phone-error"></small>
+                </div>
+                <fieldset class="delivery-options">
+                  <legend>Cara menerima barang</legend>
+                  <label class="choice-option">
+                    <input type="radio" name="delivery" value="pickup" checked>
+                    <span class="choice-option__box" aria-hidden="true"></span>
+                    <span>Ambil di toko</span>
+                  </label>
+                  <label class="choice-option">
+                    <input type="radio" name="delivery" value="delivery">
+                    <span class="choice-option__box" aria-hidden="true"></span>
+                    <span>Dikirim</span>
+                  </label>
+                </fieldset>
+                <div class="field" id="address-field" hidden>
+                  <label for="customer-address">Alamat pengiriman</label>
+                  <textarea id="customer-address" name="address" rows="3" minlength="10" maxlength="200" autocomplete="street-address" aria-describedby="address-error"></textarea>
+                  <small class="field-error" id="address-error"></small>
+                </div>
+                <button class="button button--primary button--wide" id="review-order" type="submit">Periksa pesanan <span aria-hidden="true">→</span></button>
+                <p id="checkout-message" class="form-message" role="status" aria-live="polite"></p>
+              </form>
+
+              <section id="order-review" class="order-review" aria-labelledby="review-title" hidden>
+                <div class="form-divider"><span>Langkah terakhir</span></div>
+                <h3 id="review-title">Periksa ringkasanmu</h3>
+                <div id="review-content" class="review-content"></div>
+                <p class="review-disclaimer">Dengan membuka WhatsApp, nama, nomor, dan rincian ini akan dimasukkan ke draf pesan. Pesan tidak dikirim otomatis.</p>
+                <button class="button button--whatsapp button--wide" id="whatsapp-button" type="button" disabled>Pesan via WhatsApp <span aria-hidden="true">↗</span></button>
+                <p id="whatsapp-note" class="field-hint"></p>
+                <button class="text-button" id="edit-order" type="button">Ubah pesanan</button>
+              </section>
+            </aside>
+          </div>
+          <p id="app-status" class="sr-only" role="status" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section class="how-section" id="cara-pesan" aria-labelledby="how-title">
+        <div class="shell how-layout">
+          <div class="how-intro">
+            <p class="eyebrow">Dari pilihan ke percakapan</p>
+            <h2 id="how-title">Pesan dengan<br><em>lebih terarah.</em></h2>
+            <p>Rincian yang jelas membantu penjual mengecek kebutuhanmu dengan cepat.</p>
+          </div>
+          <ol class="steps-list">
+            <li><span class="step-number">01</span><div><h3>Pilih perlengkapan</h3><p>Cari produk, lalu atur jumlahnya di keranjang.</p></div></li>
+            <li><span class="step-number">02</span><div><h3>Periksa ringkasan</h3><p>Pastikan barang, kontak, dan cara menerima sudah benar.</p></div></li>
+            <li><span class="step-number">03</span><div><h3>Konfirmasi dengan toko</h3><p>Buka draf WhatsApp dan tekan kirim sendiri untuk menanyakan stok serta ongkir.</p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="info-section shell" id="faq" aria-labelledby="faq-title">
+        <div class="info-section__heading">
+          <p class="eyebrow">Sebelum memilih</p>
+          <h2 id="faq-title">Pertanyaan umum</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>Apakah harga dan stok di katalog selalu terbaru?</summary>
+            <p>Belum tentu. Harga pada katalog ini masih data contoh. Penjual perlu mengonfirmasi harga dan ketersediaan sebelum pesanan disepakati.</p>
+          </details>
+          <details>
+            <summary>Apakah total sudah termasuk ongkos kirim?</summary>
+            <p>Belum. Total hanya estimasi harga barang. Ongkir dan biaya lain akan diinformasikan penjual setelah alamat serta tujuan pengiriman diketahui.</p>
+          </details>
+          <details>
+            <summary>Kapan pesanan saya dianggap disetujui?</summary>
+            <p>Membuka atau mengirim pesan WhatsApp belum berarti pesanan disetujui. Pesanan baru disepakati setelah penjual mengecek stok dan kedua pihak menyetujui rincian serta pembayaran.</p>
+          </details>
+          <details>
+            <summary>Bagaimana aturan retur atau penukaran?</summary>
+            <p>Kebijakan retur dan penukaran toko belum dikonfigurasi. Tanyakan langsung kepada penjual sebelum menyetujui pembelian.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="contact-band" id="kontak" aria-labelledby="contact-title">
+        <div class="shell contact-band__inner">
+          <div>
+            <p class="eyebrow">Goresan Store</p>
+            <h2 id="contact-title">Ada yang ingin<br>kamu tanyakan?</h2>
+          </div>
+          <div class="contact-note">
+            <p>Informasi kontak toko belum dikonfigurasi. Pemesanan online belum tersedia sampai nomor WhatsApp resmi dimasukkan.</p>
+            <span class="contact-note__line" aria-hidden="true"></span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell site-footer__inner">
+        <a class="wordmark wordmark--footer" href="#beranda"><span class="wordmark__stamp" aria-hidden="true">G</span><span>goresan<span class="wordmark__light"> store</span></span></a>
+        <p>Teman untuk setiap garis yang kamu mulai.</p>
+        <small>© <span id="current-year"></span> Goresan Store · Data katalog masih contoh</small>
+      </div>
+    </footer>
+    <noscript><p class="noscript">Aktifkan JavaScript untuk melihat katalog dan menggunakan keranjang. Informasi produk pada website ini masih berupa contoh.</p></noscript>
+  </body>
+</html>
